@@ -1,14 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>DISCIPLINA DE DADOS PARA RESTAURANTE - Projeto Acadêmico</title>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-    <h1>Welcome to My Landing Page</h1>
-    <p>This is a simple landing page.</p>
+
+    <header>
+        <div class="logo">
+            <a href="#inicio">DATA<span>REST</span></a>
+        </div>
+
+        <button id="menu-toggle" aria-label="Abrir Menu" aria-expanded="false" aria-controls="full-menu-overlay">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav id="full-menu-overlay" class="menu-dropdown-overlay" aria-label="Menu de Navegação Principal do Projeto" role="dialog" aria-modal="true">
+        <ul>
+            <li><a href="#inicio">Avaliação Parcial</a></li>
+            <li><a href="#integrantes">Equipe</a></li>
+            <li><a href="#introducao">introducão</a></li>
+            <li><a href="#nossa_ideia">Nossa Ideia</a></li>
+            <li><a href="#modelagem1_geral">À Criação (Governança)</a></li>
+            <li><a href="#modelagem1_logico">Modelo Lógico inicial</a></li>
+            <li><a href="#modelagem1_fisico">Modelo Físico inicial</a></li>
+            <li><a href="#modelagem2_logico">Modelo Lógico final</a></li>
+            <li><a href="#modelagem2_fisico">Modelo Físico final</a></li>
+            <li><a href="#implementacao_dml">DML (Data Manipulation Language)</a></li>
+            <li><a href="#implementacao_ddl">DDL (Data Definition Language)</a></li>
+            <li><a href="#perspectivas_dml">DQL Perspectivas (Consultas)</a></li>
+            <li><a href="#perspectivas_dcl">DCL Perspectivas (Acesso)</a></li>
+            <li><a href="#perspectivas_tcl">TCL Perspectivas (Transação)</a></li>
+            <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+        <button id="close-menu" aria-label="Fechar Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </nav>
+
+
+    <main class="main-content">
+
+
+        <section id="inicio" class="section-full-bleed dark-bg visible">
+            <div class="content-container two-column-grid">
+                <div class="text-content">
+                    <h2 class="section-title">Resumo do Projeto de Banco de Dados Integrado e Otimização</h2>
+                    <p class="intro-font-large">Projeto de pesquisa para a disciplina de Banco de Dados da Universidade
+                        Positivo, para o curso de Análise e Desenvolvimento de Sistemas..</p>
+                    <p class="section-subtitle-small">Docente: Prof. Rubem M. Koide</p>
+                </div>
+                <div class="image-grid-container mockup-image-style">
+                    <video control loop width="600" height="auto" autoplay muted id="video-apresentacao"
+                           role="img" aria-description="Animação gráfica com os principais conceitos do projeto de banco de dados DataRest.">
+                        <source src="video banco - cópia.mov" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="integrantes" class="section-full-bleed dark-bg">
+            <div class="content-container"> 
+                <h2 class="section-title text-center">Equipe</h2>
+                <div class="autor-grid">
+                    <article class="autor-card">
+                        <figure class="foto-placeholder">
+                            <img src="Andrey.jpg" alt="Foto de Andrey Martins">
+                        </figure>
+                        <h3>Andrey Martins</h3>
+                        <dl>
+                            <dt class="sr-only">Função</dt>
+                            <dd class="role">Programador e Desenvolvedor SQL</dd>
+                        </dl>
+                    </article>
+
+                    <article class="autor-card">
+                        <figure class="foto-placeholder">
+                            <img src="Gustavo.jpg" alt="Foto de Gustavo Kurilo">
+                        </figure>
+                        <h3>Gustavo Kurilo</h3>
+                        <dl>
+                            <dt class="sr-only">Função</dt>
+                            <dd class="role">Programador e Desenvolvedor SQL</dd>
+                        </dl>
+                    </article>
+
+                    <article class="autor-card">
+                        <figure class="foto-placeholder">
+                            <img src="Michel Barlatti.JPG" alt="Foto de Michel Barlatti">
+                        </figure>
+                        <h3>Michel Barlatti</h3>
+                        <dl>
+                            <dt class="sr-only">Função</dt>
+                            <dd class="role">Programador e Desenvolvedor SQL</dd>
+                        </dl>
+                    </article>
+
+                    <article class="autor-card">
+                        <figure class="foto-placeholder">
+                            <img src="Vivi.jpg" alt="Foto de Vinicio Kuhn">
+                        </figure>
+                        <h3>Vinicio Kuhn</h3>
+                        <dl>
+                            <dt class="sr-only">Função</dt>
+                            <dd class="role">Programador e Desenvolvedor SQL</dd>
+                        </dl>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="introducao" class="section-full-bleed dark-bg">
+            <div class="content-container two-column-grid">
+                <article>
+                    <h2 class="section-title">Introdução</h2>
+
+                    <p class="intro-font-large">O objetivo é implementar um sistema de Banco de Dados Relacional MySQL
+                        para gerenciar dados de um restaurante, garantindo dados confiáveis e acessíveis para a tomada
+                        de decisões.</p>
+
+                    <details>
+                        <summary>O que é Banco de Dados?:</summary>
+                        <p class="intro-font-large"><em>→ É um sistema organizado criado para armazenar, gerenciar e
+                                recuperar informações de forma eficiente.</em></p>
+                    </details>
+
+                    <details>
+                        <summary>Qual sua função principal?:</summary>
+                        <p class="intro-font-large"><em>→ É guardar grandes volumes de dados com segurança e acesso
+                                rápido.</em></p>
+                    </details>
+
+                </article>
+                <div class="image-grid-container mockup-image-style">
+                    <img src="banco de dados.JPG"
+                        alt="Representação visual abstrata de dados sendo processados em servidores digitais.">
+                </div>
+            </div>
+        </section>
+
+        <section id="nossa_ideia" class="section-full-bleed dark-bg">
+            <div class="content-container two-column-grid">
+                <article>
+                    <h2 class="section-title">Nossas ideias e pensamentos</h2>
+
+                    <p class="intro-font-large">Servir como o "sistema nervoso central" do restaurante, transformando
+                        dados brutos em inteligência de negócio e abrangendo Vendas, Estoque, Finanças e Conformidade
+                        Legal.</p>
+
+                    <details>
+                        <summary>Estoque:</summary>
+                        <p class="intro-font-large"><em>→ Entrada/saída, Custo da Mercadoria Vendida (CMV), alertas e
+                                previsão.</em></p>
+                    </details>
+
+                    <details>
+                        <summary>Financeiro:</summary>
+                        <p class="intro-font-large"><em> → Fluxo de caixa, contas a pagar/receber, lucratividade.</em>
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Vendas:</summary>
+                        <p class="intro-font-large"><em>→ Ticket médio, itens mais vendidos, performance por turno</em>
+                        </p>
+                    </details>
+
+                </article>
+                <div class="image-grid-container mockup-image-style">
+                    <img src="nossa ideia_1.jpg"
+                        alt="Representação visual abstrata de dados sendo processados em servidores digitais.">
+                </div>
+            </div>
+        </section>
+
+        <section id="modelagem1_geral" class="section-full-bleed dark-bg">
+            <div class="content-container two-column-grid">
+                <article>
+                    <h2 class="section-title">À criação</h2>
+                    <p class="intro-font-large">Foca em Segurança e Ética através da Governança de Dados e da aderência
+                        estrita à LGPD, utilizando Criptografia e o Princípio do Mínimo Privilégio.</p>
+
+                    <details>
+                        <summary>Governança de Dados:</summary>
+                        <p class="intro-font-large"><em>→ Conjunto de políticas, processos e responsabilidades para
+                                gerir dados com qualidade e segurança.</em></p>
+                    </details>
+                    <details>
+                        <summary>LGPD Lei Geral de Proteção de Dados:</summary>
+                        <p class="intro-font-large"><em>→ Lei no 13.709/2018 (Artigos 6º, 7º e 8º), que regula
+                                tratamento de dados pessoais.</em></p>
+                    </details>
+                </article>
+                <div class="image-grid-container mockup-image-style">
+                    <img src="criacao.JPG"
+                        alt="Representação visual abstrata de dados sendo processados em servidores digitais.">
+                </div>
+            </div>
+        </section>
+
+        <section id="modelagem1_logico" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+
+                <article>
+                    <h2 class="section-title">Modelo Lógico inicial</h2>
+                    <p class="intro-font-large">Estrutura de chaves e atributos das entidades primárias como Cardapio,
+                        Comanda, Receitas e Fornecedor, no formato de Diagrama Entidade-Relacionamento.</p>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="M_logico1.png" alt="Diagrama do Modelo Lógico da Primeira Etapa.">
+                </div>
+
+        </section>
+
+        <section id="modelagem1_fisico" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+                <article>
+                    <h2 class="section-title">Modelo Físico inicial</h2>
+                    <p class="intro-font-large">Representação do Schema Relacional e definição da estrutura para o
+                        Sistema de Gerenciamento do Banco de Dados (SGBD) MySQL, utilizando DDL (Data Definition
+                        Language) (DDL) com tipos de dados específicos.</p>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="M_fisico1.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                </div>
+            </div>
+        </section>
+
+        <section id="modelagem2_logico" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+
+                <article>
+                    <h2 class="section-title">Modelo Lógico final:</h2>
+                    <p class="intro-font-large">Versão refinada do modelo lógico, incluindo entidades como Funcionarios,
+                        Cozinha, Inventario e Financeiro.</p>
+
+                    <details>
+                        <summary>Melhorias realizadas:</summary>
+                        <p class="intro-font-large"><em>→ Refizemos a modelagem para melhorar as relações entre
+                                tabelas</em></p>
+                    </details>
+
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="M_logico2.png" alt="Diagrama do Modelo Lógico da Primeira Etapa.">
+                </div>
+        </section>
+
+        <section id="modelagem2_fisico" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+                <article>
+                    <h2 class="section-title">Modelo Físico final:</h2>
+                    <p class="intro-font-large">DDL completo, com correções identificadas: necessidade de inclusão da
+                        tabela Clientes e correção da chave estrangeira de Funcionarios (deveria apontar para cozinha).
+                    </p>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="M_fisico1.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="implementacao_dml" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+                <article>
+                    <h2 class="section-title">DML (Data Manipulation Language):</h2>
+                    <p class="intro-font-large">Comandos (INSERT, UPDATE, DELETE) para manipular o conteúdo das tabelas,
+                        usados implicitamente por triggers para automatizar processos como baixa de estoque.</p>
+
+                    <details>
+                        <summary>DML (Data Manipulation Language):</summary>
+                        <p class="intro-font-large"><em>→ INSERT (ALIMENTAÇÃO DA PLANILHA)</em></p>
+                    </details>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="DML1.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                </div>
+            </div>
+        </section>
+
+        <section id="implementacao_ddl" class="section-full-bleed dark-bg">
+            <div class="content-container modelagem-grid">
+                <article>
+                    <h2 class="section-title">DDL (Data Definition Language):</h2>
+                    <p class="intro-font-large">Define a estrutura física do banco de dados (tabelas, chaves) usando
+                        comandos como CREATE TABLE, PRIMARY KEY e FOREIGN KEY.</p>
+
+
+                    <details>
+                        <summary>DDL (Data Definition Language):</summary>
+                        <p class="intro-font-large"><em>→ Alter Table, ADD COLUMN, & ADD FOREIGN KEY</em></p>
+                    </details>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="DDL1.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                </div>
+            </div>
+        </section>
+
+        <section id="perspectivas_dml" class="section-full-bleed dark-bg">
+            <div class="content-container perspectivas-grid">
+
+                <article>
+                    <h2 class="section-title">DQL Perspectivas (Consultas):</h2>
+                    <p class="intro-font-large">Usa SELECT para gerar Business Intelligence (BI), sendo as consultas
+                        otimizadas e validadas com o comando EXPLAIN.</p>
+
+                    <details>
+                        <summary>DQL Perspectivas (Consultas):</summary>
+                        <img src="DML2.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                    </details>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="DML3.png" alt="Diagrama do Modelo fisico da Primeira Etapa.">
+                </div>
+        </section>
+
+        <section id="perspectivas_dcl" class="section-full-bleed dark-bg">
+            <div class="content-container perspectivas-grid">
+                <article>
+                    <h2 class="section-title">DCL Perspectivas (Acesso)</h2>
+                    <p class="intro-font-large">Controla os privilégios dos usuários (GRANT e REVOKE), implementando o
+                        Princípio do Mínimo Privilégio conforme a Matriz de Permissões.</p>
+
+                    <details>
+                        <summary>DCL - Grant Acess:</summary>
+                        <img src="DCL1.png" alt="Exemplo de código SQL Grant Access.">
+                    </details>
+                    <details>
+                        <summary>DCL - Grant Acess (Exemplo 2):</summary>
+                        <img src="DCL2.png" alt="Exemplo de código SQL Grant Access (Exemplo 2).">
+                    </details>
+                </article>
+
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="_DCL.JPG" alt="Representação visual do controle de acesso DCL.">
+                </div>
+            </div>
+        </section>
+
+        <section id="perspectivas_tcl" class="section-full-bleed dark-bg">
+            <div class="content-container perspectivas-grid">
+                <article>
+                    <h2 class="section-title">TCL Perspectivas (Transação):</h2>
+                    <p class="intro-font-large">Garante as propriedades ACID (COMMIT, ROLLBACK) em operações críticas,
+                        assegurando a Atomicidade e a integridade dos dados (Tudo ou Nada).</p>
+
+                    <details>
+                        <summary>TCL (Transactional Control Language):</summary>
+                        <img src="DML2.png" alt="Exemplo de código SQL TCL.">
+                    </details>
+                </article>
+
+                <div class="image-grid-container mockup-image-style">
+                    <img src="TCL1.png" alt="Representação visual de uma transação TCL.">
+                </div>
+        </section>
+
+        <section id="conclusao" class="section-full-bleed dark-bg">
+            <div class="content-container two-column-grid">
+                <article>
+                    <h2 class="section-title">Conclusão</h2>
+
+                    <p class="intro-font-large">O sistema cumpriu os objetivos de governança, modelagem e otimização,
+                        mas requer ajustes finais no Schema (tabela Clientes e FK de Funcionarios) para conformidade
+                        total.</p>
+
+                    <details>
+                        <summary>Modelagens:</summary>
+                        <p class="intro-font-large"><em>→ Modelagem refinada + Normalização otimizada </em></p>
+                    </details>
+
+                    <details>
+                        <summary>Performace:</summary>
+                        <p class="intro-font-large"><em> → Consultas performáticas + Integridade total </em></p>
+                    </details>
+
+                    <details>
+                        <summary>Security:</summary>
+                        <p class="intro-font-large"><em>→ Precisão • Segurança • Escalabilidade </em></p>
+                    </details>
+                    <details>
+                        <summary>Dados:</summary>
+                        <p class="intro-font-large"><em>→ Dados brutos → Insights estratégicos </em></p>
+                    </details>
+                    <details>
+                        <summary>Tempo:</summary>
+                        <p class="intro-font-large"><em>→ Tempo real: Entradas, Saídas, Saldos, Financeiro, Projeções
+                            </em></p>
+                    </details>
+
+                </article>
+                <div class="image-grid-container mockup-image-style">
+                    <img src="criacao_1.JPG"
+                        alt="Representação visual abstrata de dados sendo processados em servidores digitais.">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="Rodapé">
+        <div class="footer-main-content">
+            <div class="footer-info">
+                <div class="logo footer-logo">
+                    <a href="#inicio">DATA<span>REST</span></a>
+                </div>
+                <div class="footer-bottom-text">
+                    <p>Curso de Análise e Desenvolvimento de Sistemas | Projeto Acadêmico</p>
+                    <p>© <time datetime="2025">2025</time> Todos os direitos reservados.</p>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h3>INFORMAÇÕES GERAIS</h3>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#nossa_ideia">Nossa Ideia</a></li>
+                        <li><a href="#conclusao">Conclusão</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ESTRUTURA DB</h3>
+                    <ul>
+                        <li><a href="#integrantes">Integrantes</a></li>
+                        <li><a href="#modelagem1_geral">Etapa Governança</a></li>
+                        <li><a href="#perspectivas_dml">Perspectivas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-line">
+            <p>Desenvolvido para a Disciplina de Banco de Dados da Universidade Positivo.</p>
+        </div>
+    </footer>
+
+    <div class="floating-nav-buttons">
+        <button id="prev-section-btn" aria-label="Voltar para a seção anterior" class="nav-button prev-button hidden">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="next-section-btn" aria-label="Ir para a próxima seção" class="nav-button next-button hidden">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

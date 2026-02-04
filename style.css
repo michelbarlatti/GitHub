@@ -1,0 +1,802 @@
+/* Importação das Fontes (Poppins para títulos, Montserrat para corpo) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+/* Variáveis CSS para a Paleta de Cores do Mockup */
+:root {
+    --color-dark-primary: #1A1A1A; /* Fundo preto/cinza escuro do mockup */
+    --color-green-accent: #A3FF00; /* Verde limão brilhante do mockup */
+    --color-text-light: #F4F4F9; /* Texto claro (para fundos escuros) */
+    --color-text-dark: #333333; /* Texto escuro (para fundos claros) */
+    --color-text-gray: #A0A0A0; /* Cinza para textos secundários */
+
+    --font-heading: 'Poppins', sans-serif; /* Mais impactante, para títulos */
+    --font-body: 'Montserrat', sans-serif; /* Mais limpa, para corpo de texto */
+
+    --header-height: 4.5rem; /* Altura do cabeçalho */
+    --content-padding: 10%; /* Padding global ajustado */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CLASSE PARA ACCESSIBILIDADE: Esconde o texto da tela (Screen Reader Only) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+
+/* ROLAGEM SUAVE COM CSS (Para transição do conteúdo) */
+html {
+    font-size: 16px; 
+    font-family: var(--font-body);
+    color: var(--color-text-light); 
+    background-color: var(--color-dark-primary); 
+    scroll-behavior: smooth; /* Habilita rolagem suave */
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; 
+}
+
+/* HEADER - Topo da Página */
+header {
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    padding: 0 var(--content-padding);
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    position: sticky; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.logo a {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--color-text-light);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo a span {
+    color: var(--color-green-accent); 
+}
+
+/* Botão de Menu Hambúrguer (SEMPRE VISÍVEL) */
+#menu-toggle {
+    background: none;
+    border: none;
+    color: var(--color-green-accent);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001; 
+    display: block; /* Garante visibilidade em todas as telas */
+}
+
+
+/* MENU OVERLAY (Tela Cheia em todas as resoluções) */
+.menu-dropdown-overlay {
+    /* Estado padrão - Menu Overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-dark-primary); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Centraliza verticalmente */
+    z-index: 1002; 
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9); 
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.menu-dropdown-overlay.menu-dropdown-open {
+    opacity: 0.9; /* Opacidade de 0.9 mantida */
+    visibility: visible;
+    transform: scale(1);
+}
+
+.menu-dropdown-overlay ul {
+    list-style: none;
+    /* ALINHAMENTO À DIREITA */
+    text-align: right;
+    margin-top: 0px; 
+    padding: 0 var(--content-padding); 
+    width: 100%; 
+    max-width: 1200px; 
+    margin-left: auto; 
+    margin-right: auto;
+    display: block; 
+    flex-wrap: wrap; 
+    white-space: normal;
+    overflow-x: hidden;
+}
+
+.menu-dropdown-overlay a {
+    font-family: var(--font-heading);
+    /* FONTE DIMINUÍDA */
+    font-size: 1.1rem; 
+    color: var(--color-text-light);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    display: block;
+    transition: color 0.2s;
+}
+
+#close-menu {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--color-green-accent);
+    font-size: 2rem;
+    cursor: pointer;
+    display: block; /* Visível em todas as telas */
+}
+
+
+/* MAIN - Conteúdo Principal */
+main {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+    color: var(--color-text-light); 
+}
+
+/* REGRA SOLICITADA: Faz com que itens flexíveis (div) no main tenham o mesmo comprimento */
+main div {
+    flex: 1;
+}
+
+/* Estilos para todas as seções */
+section {
+    padding: 4rem var(--content-padding);
+    display: none; 
+    position: relative;
+    overflow: hidden; 
+}
+
+/* ESPAÇAMENTO DO ALVO (Impede que a seção fique escondida atrás do Header) */
+section:target {
+    scroll-margin-top: 5rem; 
+}
+
+section.visible {
+    display: block; 
+}
+
+.dark-bg {
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+}
+
+.green-bg {
+    background-color: var(--color-green-accent);
+    color: var(--color-text-dark); 
+}
+
+/* Elementos gráficos de fundo (linhas e formas) */
+.dark-bg::before, .green-bg::before,
+.dark-bg::after, .green-bg::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.05); 
+    z-index: 1;
+    pointer-events: none;
+}
+.green-bg::before, .green-bg::after {
+    background-color: rgba(0, 0, 0, 0.08); 
+}
+
+.dark-bg::before { /* Linha diagonal superior esquerda */
+    width: 100%; height: 100px;
+    transform: rotate(5deg);
+    top: -50px; left: -20%;
+}
+.dark-bg::after { /* Linha diagonal inferior direita */
+    width: 100%; height: 100px;
+    transform: rotate(-10deg);
+    bottom: -50px; right: -20%;
+}
+.green-bg::before { /* Linha diagonal superior direita */
+    width: 100%; height: 80px;
+    transform: rotate(-3deg);
+    top: -30px; right: -15%;
+}
+.green-bg::after { /* Forma geométrica inferior esquerda */
+    width: 150px; height: 150px;
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    bottom: -75px; left: -75px;
+    transform: rotate(45deg);
+    border-radius: 20px;
+}
+
+
+/* Estilo geral de títulos */
+h2.section-title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: inherit; 
+    position: relative; 
+    z-index: 2;
+}
+.green-bg h2.section-title {
+    color: var(--color-dark-primary);
+}
+.dark-bg h2.section-title {
+    color: var(--color-green-accent); 
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Containers de Conteúdo (para padding interno e alinhamento) */
+.content-container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; 
+}
+
+/* ESTILOS PARA A SEÇÃO #INICIO PARA ALINHAMENTO LADO A LADO */
+#inicio .content-container {
+    display: flex;
+    flex-direction: column; /* Padrão: empilhado em mobile */
+    gap: 2rem; /* Espaço entre o texto e a imagem */
+    align-items: center; /* Centraliza itens na coluna */
+}
+
+/* LAYOUT DE DUAS COLUNAS PARA TODOS OS GRIDS */
+.two-column-grid,
+.modelagem-grid, 
+.perspectivas-grid,
+.autor-grid {
+    display: grid;
+    /* REGRA SOLICITADA APLICADA A TODOS OS GRIDS: Duas colunas iguais */
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center; 
+}
+
+/* AJUSTE PARA O AUTOR-GRID PARA MANTER O LAYOUT ORIGINAL EM 4 COLUNAS NO DESKTOP */
+@media (min-width: 992px) {
+    .autor-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop, voltando ao grid original de autores */
+        gap: 2rem;
+    }
+}
+
+
+/* Layout de duas colunas (geral, para outras seções) */
+.two-column-grid {
+    /* Mantém as regras base de grid de 2 colunas */
+}
+/* Estilos para a reversão do Grid (Mantido) */
+.two-column-grid.reversed-grid {
+    grid-template-columns: 1fr 1fr;
+    direction: rtl; 
+    align-items: center;
+}
+.two-column-grid.reversed-grid > *:nth-child(1) {
+    direction: ltr; 
+}
+.two-column-grid.reversed-grid .image-grid-container {
+    grid-column: 1; 
+}
+.two-column-grid.reversed-grid article {
+    grid-column: 2; 
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+}
+.two-column-grid.reversed-grid article h2,
+.two-column-grid.reversed-grid article h4,
+.two-column-grid.reversed-grid article p {
+    text-align: right;
+    width: 100%; 
+}
+.two-column-grid.reversed-grid article details {
+    text-align: left;
+    width: 100%; 
+}
+.two-column-grid.reversed-grid details p, 
+.two-column-grid.reversed-grid details ul {
+    text-align: left; 
+}
+
+
+/* Estilos Adicionais (Restante do Conteúdo) */
+.intro-font-large {
+    font-size: 1.7rem;
+    line-height: 1.4;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: inherit;
+}
+
+.section-subtitle-small {
+    font-size: 1.2rem;
+    color: var(--color-text-gray); 
+}
+.green-bg .section-subtitle-small {
+    color: rgba(0, 0, 0, 0.6); 
+}
+
+.image-grid-container {
+    border: 3px solid var(--color-green-accent); 
+    padding: 5px; 
+    background-color: var(--color-dark-primary);
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    display: flex;
+    max-width: 100%;
+}
+
+.image-grid-container img,
+.image-grid-container video {
+    width: 100%;
+    height: 100%; /* Ajuste para preencher o container na vertical */
+    object-fit: cover; /* Garante que a imagem/vídeo cubra a área sem distorção */
+    display: block;
+    /* FILTRO INICIAL (P&B) */
+    filter: grayscale(100%) brightness(80%) contrast(120%); 
+    mix-blend-mode: luminosity; 
+    /* Adiciona transição para o hover */
+    transition: filter 0.5s ease-in-out, transform 0.3s ease; 
+}
+
+/* --- EFEITO HOVER NAS IMAGENS PRINCIPAIS (Volta ao modo original/colorido e zoom) --- */
+.image-grid-container:hover img,
+.image-grid-container:hover video {
+    /* Remove o filtro P&B e de luminosidade, voltando ao "modo original" */
+    filter: none; 
+    mix-blend-mode: normal;
+    /* Efeito adicional: um leve zoom */
+    transform: scale(1.02); 
+}
+
+/* Estilos dos Cards (Autor) */
+.autor-card {
+    background-color: var(--color-dark-primary); 
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    transition: box-shadow 0.3s ease; 
+}
+
+.autor-card:hover {
+    box-shadow: 0 0 30px rgba(163, 255, 0, 0.5); /* Brilho no hover */
+}
+
+.autor-card h3 {
+    font-family: var(--font-heading);
+    color: var(--color-green-accent);
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+}
+
+/* Estiliza o conteúdo da DD (Description Data) - a função */
+.autor-card .role {
+    color: var(--color-text-gray);
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 0; 
+}
+
+.foto-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--color-green-accent);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+}
+
+.foto-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(80%) contrast(120%); 
+    /* Adiciona transição para o hover */
+    transition: filter 0.5s ease-in-out; 
+}
+
+/* Efeito hover nas fotos dos integrantes (volta ao modo original/colorido) */
+.autor-card:hover .foto-placeholder img {
+    filter: none;
+}
+
+
+/* Estilização de Detalhes (Conteúdo expansível) */
+details {
+    margin: 1.25rem 0; 
+    padding: 0.9375rem; 
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--color-text-light);
+}
+.green-bg details {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-text-dark);
+}
+
+summary {
+    font-weight: 700;
+    color: var(--color-green-accent);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-heading);
+}
+.green-bg summary {
+    color: var(--color-dark-primary);
+}
+
+details p, details ul, details img {
+    margin-top: 0.625rem; 
+    padding-left: 0.9375rem; 
+    border-left: 2px solid var(--color-green-accent);
+}
+.green-bg details p, .green-bg details ul {
+    border-left-color: var(--color-dark-primary);
+}
+
+
+/* Seções de Modelagem e Perspectivas (Grids de Cards) */
+.modelagem-card, .perspectiva-card {
+    background-color: var(--color-dark-primary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center; 
+}
+.green-bg .modelagem-card, .green-bg .perspectiva-card {
+    background-color: rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--color-dark-primary);
+}
+
+.modelagem-card h3, .perspectiva-card h3 {
+    font-family: var(--font-heading);
+    color: var(--color-green-accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+.green-bg .modelagem-card h3, .green-bg .perspectiva-card h3 {
+    color: var(--color-dark-primary);
+}
+
+.modelagem-card p, .perspectiva-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    flex-grow: 1; 
+    color: var(--color-text-gray);
+}
+.green-bg .modelagem-card p, .green-bg .perspectiva-card p {
+    color: var(--color-dark-primary);
+}
+
+
+.modelagem-card img, .perspectiva-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border: 2px solid var(--color-green-accent);
+    padding: 3px;
+    filter: grayscale(100%) brightness(80%) contrast(120%);
+    mix-blend-mode: luminosity;
+    border-radius: 5px;
+    transition: filter 0.5s ease-in-out; 
+}
+
+/* Aplicando o mesmo hover para as imagens em Modelagem/Perspectivas */
+.modelagem-card:hover img, .perspectiva-card:hover img {
+    filter: none;
+    mix-blend-mode: normal;
+}
+
+
+.green-bg .modelagem-card img, .green-bg .perspectiva-card img {
+    border-color: var(--color-dark-primary);
+}
+
+
+/* FOOTER - NOVO LAYOUT FUNCIONAL */
+footer {
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    padding: 3rem var(--content-padding) 1.5rem; 
+    
+    display: flex; 
+    flex-direction: column;
+    
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative; 
+    overflow: hidden;
+}
+
+.footer-main-content {
+    display: flex;
+    flex-direction: column; /* Empilha em mobile */
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    width: 100%;
+}
+
+.footer-info {
+    /* Contém logo e texto de copyright */
+    max-width: 300px;
+}
+
+.footer-info .footer-logo a {
+    font-size: 1.8rem;
+}
+
+.footer-info .footer-bottom-text {
+    font-size: 0.9rem;
+    color: var(--color-text-gray);
+    margin-top: 1rem;
+}
+
+.footer-links-group {
+    display: flex;
+    gap: 4rem; /* Espaço entre as colunas de links */
+}
+
+.footer-column {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-column h3 {
+    font-family: var(--font-heading);
+    color: var(--color-green-accent);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: var(--color-text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: var(--color-green-accent);
+}
+
+.footer-bottom-line {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.85rem;
+    color: var(--color-text-gray);
+    position: relative;
+    z-index: 2;
+}
+
+/* GRÁFICO DE FUNDO (MANTIDO) */
+footer::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    bottom: -150px; left: -150px;
+    z-index: 1;
+}
+
+/* --- ESTILOS PARA BOTÕES FLUTUANTES DE NAVEGAÇÃO --- */
+.floating-nav-buttons {
+    position: fixed;
+    bottom: 3rem; 
+    /* CENTRALIZAÇÃO HORIZONTAL */
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1000;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-button {
+    background-color: var(--color-green-accent);
+    color: var(--color-dark-primary);
+    border: none;
+    border-radius: 50%; 
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, transform 0.2s, opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background-color: #92e000; 
+    transform: translateY(-2px);
+}
+
+.nav-button.hidden {
+    /* Estilo para ocultar o botão (por exemplo, no início/fim da página) */
+    opacity: 0;
+    pointer-events: none; /* Impede cliques quando invisível */
+    transform: scale(0.8);
+}
+
+
+/* MEDIA QUERIES PARA DESKTOP */
+@media (min-width: 992px) {
+    
+    /* ESTILOS PARA A SEÇÃO #INICIO PARA ALINHAMENTO LADO A LADO */
+    #inicio .content-container {
+        flex-direction: row; 
+        align-items: flex-start; 
+        justify-content: space-between; 
+    }
+    #inicio .text-content { 
+        flex: 1; 
+        text-align: left; 
+        padding-right: 2rem; 
+    }
+    #inicio .image-grid-container {
+        flex-shrink: 0; 
+        width: 40%; 
+        max-width: 450px; 
+        height: auto; 
+    }
+    
+    /* LAYOUT DO FOOTER PARA DESKTOP */
+    .footer-main-content {
+        flex-direction: row; 
+        align-items: flex-start;
+    }
+    
+    .footer-links-group {
+        margin-left: auto; 
+        gap: 6rem; 
+    }
+    
+    /* Outras regras de layout desktop... */
+    .two-column-grid {
+        grid-template-columns: 1fr 1fr;
+        direction: ltr; 
+    }
+    .two-column-grid.reversed-grid article {
+        grid-column: 2;
+        text-align: right;
+        align-items: flex-end;
+    }
+}
+
+/* MEDIA QUERIES PARA MOBILE (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 0 3%; 
+    }
+    
+    /* Regra para voltar todos os grids para 1 coluna no mobile */
+    .two-column-grid,
+    .modelagem-grid, 
+    .perspectivas-grid,
+    .autor-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* LAYOUT DO FOOTER PARA MOBILE */
+    .footer-main-content {
+        align-items: center; 
+        text-align: center;
+        gap: 2rem;
+    }
+    .footer-info, .footer-links-group {
+        width: 100%;
+        max-width: none;
+    }
+    .footer-links-group {
+        flex-direction: column; 
+        gap: 1.5rem;
+    }
+    .footer-column {
+        margin-top: 1.5rem;
+    }
+    
+    /* Outras regras de layout mobile... */
+    .logo a {
+        font-size: 1.5rem;
+    }
+    #menu-toggle {
+        font-size: 1.5rem;
+    }
+    .menu-dropdown-overlay a {
+        font-size: 1.1rem; 
+    }
+    section {
+        padding: 3rem 3%; 
+    }
+    h2.section-title {
+        font-size: 1.8rem;
+    }
+    .intro-font-large {
+        font-size: 1.1rem;
+    }
+    
+    /* Ajuste de posição e tamanho para botões flutuantes em mobile */
+    .floating-nav-buttons {
+        bottom: 1.5rem;
+        /* Manter a centralização: */
+        left: 50%;
+        right: auto; 
+        transform: translateX(-50%);
+        gap: 0.75rem;
+    }
+    .nav-button {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+}
